@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+    url: '${DATABASE_URL:jdbc:postgresql://localhost:5432/CasaDoCodigo}'
+    username: '${DB_USER:postgres}'
+    password: '${DB_PASSWORD:postgres}'
