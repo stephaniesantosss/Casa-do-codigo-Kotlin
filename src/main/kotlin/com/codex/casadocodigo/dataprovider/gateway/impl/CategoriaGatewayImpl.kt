@@ -11,8 +11,9 @@ class CategoriaGatewayImpl(val categoriaRepository: CategoriaRepository) : Categ
 
     override fun salvaCategoria(categoria: Categoria) {
 
-        categoriaRepository.findByNome(categoria.nome).ifPresent {
-            throw DuplicateKeyException("Está categoria já está cadastrada, favor informar outra")
+        categoriaRepository.existsByNome(categoria.nome).let {
+            if (it)
+                throw DuplicateKeyException("Está categoria já está cadastrada, favor informar outra")
         }
 
         categoriaRepository.save(categoria)

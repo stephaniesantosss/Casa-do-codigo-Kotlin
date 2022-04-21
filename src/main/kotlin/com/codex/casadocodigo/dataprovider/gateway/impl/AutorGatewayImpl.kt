@@ -11,8 +11,9 @@ class AutorGatewayImpl(val autorRepository: AutorRepository) : AutorGateway {
 
     override fun salvaAutor(autor: Autor) {
 
-        autorRepository.findByEmail(autor.email).ifPresent {
-            throw DuplicateKeyException("Este email já está cadastrado, favor informar outro")
+        autorRepository.existsByEmail(autor.email).let {
+            if (it)
+                throw DuplicateKeyException("Este email já está cadastrado, favor informar outro")
         }
 
         autorRepository.save(autor)
