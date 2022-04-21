@@ -5,5 +5,4 @@ import javax.validation.constraints.NotBlank
 data class CategoriaIn(
         @field:NotBlank
         val nome: String
-) {
-}
+)

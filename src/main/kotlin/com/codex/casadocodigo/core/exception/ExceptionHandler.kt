@@ -44,4 +44,18 @@ class ExceptionHandler {
                 path = request.servletPath
         )
     }
+
+    @ExceptionHandler(ClassNotFoundException::class)
+    @ResponseStatus(BAD_REQUEST)
+    fun notFoundException(
+            exception: Exception,
+            request: HttpServletRequest
+    ): ErrorResponse {
+        return ErrorResponse(
+                status = BAD_REQUEST.value(),
+                error = BAD_REQUEST.name,
+                message = exception.message.toString(),
+                path = request.servletPath
+        )
+    }
 }

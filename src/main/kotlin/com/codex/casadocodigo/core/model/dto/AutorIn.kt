@@ -15,5 +15,4 @@ data class AutorIn(
         val descricao: String,
         @JsonIgnore
         val instanteRegistro: LocalDateTime = LocalDateTime.now()
-) {
-}
+)

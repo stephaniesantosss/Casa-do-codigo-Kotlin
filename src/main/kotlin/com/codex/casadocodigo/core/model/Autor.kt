@@ -9,7 +9,7 @@ import javax.persistence.Id
 @Entity
 data class Autor(
         @Id @GeneratedValue(strategy = AUTO)
-        val id: Long?,
+        val id: Long ?,
         val nome: String,
         @field:Column(unique = true)
         val email: String,
