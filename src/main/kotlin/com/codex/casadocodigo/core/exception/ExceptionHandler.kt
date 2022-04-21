@@ -1,7 +1,9 @@
 package com.codex.casadocodigo.core.exception
 
 import com.codex.casadocodigo.core.model.dto.ErrorResponse
+import org.springframework.dao.DuplicateKeyException
 import org.springframework.http.HttpStatus.BAD_REQUEST
+import org.springframework.http.HttpStatus.CONFLICT
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
@@ -25,6 +27,20 @@ class ExceptionHandler {
                 status = BAD_REQUEST.value(),
                 error = BAD_REQUEST.name,
                 message = errorMessage.toString(),
+                path = request.servletPath
+        )
+    }
+
+    @ExceptionHandler(DuplicateKeyException::class)
+    @ResponseStatus(CONFLICT)
+    fun duplicateKeyException(
+            exception: Exception,
+            request: HttpServletRequest
+    ): ErrorResponse {
+        return ErrorResponse(
+                status = CONFLICT.value(),
+                error = CONFLICT.name,
+                message = exception.message.toString(),
                 path = request.servletPath
         )
     }
