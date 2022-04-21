@@ -1,8 +1,8 @@
-package com.codex.casadocodigo.core.usecase.controller
+package com.codex.casadocodigo.entrypoint.controller
 
 import com.codex.casadocodigo.core.model.dto.AutorIn
 import com.codex.casadocodigo.core.usecase.AutorUseCase
-import com.codex.casadocodigo.core.usecase.controller.api.AutorControllerApi
+import com.codex.casadocodigo.entrypoint.controller.api.AutorControllerApi
 import org.springframework.web.bind.annotation.RestController
 
 @RestController

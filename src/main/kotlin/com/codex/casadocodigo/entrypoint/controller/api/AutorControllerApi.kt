@@ -1,4 +1,4 @@
-package com.codex.casadocodigo.core.usecase.controller.api
+package com.codex.casadocodigo.entrypoint.controller.api
 
 import com.codex.casadocodigo.core.model.dto.AutorIn
 import org.springframework.http.HttpStatus.OK
