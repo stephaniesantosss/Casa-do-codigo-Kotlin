@@ -1,7 +1,7 @@
-package com.codex.casadocodigo.translate
+package com.codex.casadocodigo.core.translate
 
-import com.codex.casadocodigo.AutorIn
-import com.codex.casadocodigo.model.Autor
+import com.codex.casadocodigo.core.model.dto.AutorIn
+import com.codex.casadocodigo.core.model.Autor
 
 fun translateAutorInToAutor(autorIn: AutorIn): Autor {
     return Autor(

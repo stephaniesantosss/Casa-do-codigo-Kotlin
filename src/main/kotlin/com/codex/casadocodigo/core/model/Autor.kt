@@ -1,4 +1,4 @@
-package com.codex.casadocodigo.model
+package com.codex.casadocodigo.core.model
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
