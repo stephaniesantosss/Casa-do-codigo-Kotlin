@@ -9,4 +9,6 @@ interface LivroGateway {
 
     fun buscaLivros(): List<LivroOut>
 
+    fun buscaDetalhesLivro(id: Long): LivroOut
+
 }

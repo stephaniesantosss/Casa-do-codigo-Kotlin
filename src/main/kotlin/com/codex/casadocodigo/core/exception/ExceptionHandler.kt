@@ -2,8 +2,7 @@ package com.codex.casadocodigo.core.exception
 
 import com.codex.casadocodigo.core.model.dto.ErrorResponse
 import org.springframework.dao.DuplicateKeyException
-import org.springframework.http.HttpStatus.BAD_REQUEST
-import org.springframework.http.HttpStatus.CONFLICT
+import org.springframework.http.HttpStatus.*
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
@@ -46,14 +45,14 @@ class ExceptionHandler {
     }
 
     @ExceptionHandler(ClassNotFoundException::class)
-    @ResponseStatus(BAD_REQUEST)
+    @ResponseStatus(NOT_FOUND)
     fun notFoundException(
             exception: Exception,
             request: HttpServletRequest
     ): ErrorResponse {
         return ErrorResponse(
-                status = BAD_REQUEST.value(),
-                error = BAD_REQUEST.name,
+                status = NOT_FOUND.value(),
+                error = NOT_FOUND.name,
                 message = exception.message.toString(),
                 path = request.servletPath
         )

@@ -2,6 +2,7 @@ package com.codex.casadocodigo.dataprovider.gateway.impl
 
 import com.codex.casadocodigo.core.model.Livro
 import com.codex.casadocodigo.core.model.dto.LivroOut
+import com.codex.casadocodigo.core.translate.translateLivroToLivroOut
 import com.codex.casadocodigo.dataprovider.gateway.LivroGateway
 import com.codex.casadocodigo.dataprovider.repository.AutorRepository
 import com.codex.casadocodigo.dataprovider.repository.CategoriaRepository
@@ -32,7 +33,27 @@ class LivroGatewayImpl(
     override fun buscaLivros(): List<LivroOut> {
         val listLivros = livroRepository.findAll()
         return listLivros.map {
-            LivroOut(it.id!!, it.titulo)
+            LivroOut(
+                    id = it.id!!,
+                    titulo = it.titulo,
+                    resumo = null,
+                    sumario = null,
+                    preco = null,
+                    numPaginas = null,
+                    isbn = null,
+                    dataLancamento = null,
+                    categoria = null,
+                    autor = null
+            )
+        }
+    }
+
+    override fun buscaDetalhesLivro(id: Long): LivroOut {
+        return livroRepository.findById(id).let {
+            if (it.isEmpty)
+                throw ClassNotFoundException("Id do livro não encontrado")
+
+            translateLivroToLivroOut(it.get())
         }
     }
 }

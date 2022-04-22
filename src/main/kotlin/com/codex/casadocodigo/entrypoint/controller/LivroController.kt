@@ -16,4 +16,8 @@ class LivroController(val livroUseCase: LivroUseCase) : LivroControllerApi {
     override fun buscaLivros(): List<LivroOut> {
         return livroUseCase.buscaLivros()
     }
+
+    override fun buscaDetalhesLivro(id: Long): LivroOut {
+        return livroUseCase.buscaDetalhesLivro(id)
+    }
 }

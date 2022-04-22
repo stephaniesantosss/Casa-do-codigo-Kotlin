@@ -16,4 +16,8 @@ interface LivroControllerApi {
     @ResponseStatus(OK)
     @GetMapping
     fun buscaLivros(): List<LivroOut>
+
+    @ResponseStatus(OK)
+    @GetMapping("/{id}")
+    fun buscaDetalhesLivro(@PathVariable("id") id: Long): LivroOut
 }

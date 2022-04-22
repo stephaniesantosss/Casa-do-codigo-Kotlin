@@ -17,4 +17,8 @@ class LivroUseCase(val livroGateway: LivroGateway) {
     fun buscaLivros(): List<LivroOut> {
         return livroGateway.buscaLivros()
     }
+
+    fun buscaDetalhesLivro(id: Long): LivroOut {
+        return livroGateway.buscaDetalhesLivro(id)
+    }
 }
