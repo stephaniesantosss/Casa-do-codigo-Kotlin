@@ -11,5 +11,5 @@ data class Pais(
         @Id @GeneratedValue(strategy = AUTO)
         val id: Long ?,
         @field:Column(unique = true)
-        val nome: String
+        val nome: String ?
 )

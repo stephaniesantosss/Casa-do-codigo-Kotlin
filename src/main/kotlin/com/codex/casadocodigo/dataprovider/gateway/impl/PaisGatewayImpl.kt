@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component
 class PaisGatewayImpl(val paisRepository: PaisRepository) : PaisGateway {
 
     override fun salvaPais(pais: Pais) {
-        paisRepository.existsByNome(pais.nome).let {
+        paisRepository.existsByNome(pais.nome!!).let {
             if (it)
                 throw DuplicateKeyException("Este Pais já está cadastrado, favor informar outro")
             paisRepository.save(pais)
