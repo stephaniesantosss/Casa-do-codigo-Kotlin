@@ -1,6 +1,7 @@
 package com.codex.casadocodigo.dataprovider.gateway.impl
 
 import com.codex.casadocodigo.core.model.Livro
+import com.codex.casadocodigo.core.model.dto.LivroOut
 import com.codex.casadocodigo.dataprovider.gateway.LivroGateway
 import com.codex.casadocodigo.dataprovider.repository.AutorRepository
 import com.codex.casadocodigo.dataprovider.repository.CategoriaRepository
@@ -26,5 +27,12 @@ class LivroGatewayImpl(
         }
 
         livroRepository.save(livro)
+    }
+
+    override fun buscaLivros(): List<LivroOut> {
+        val listLivros = livroRepository.findAll()
+        return listLivros.map {
+            LivroOut(it.id!!, it.titulo)
+        }
     }
 }
