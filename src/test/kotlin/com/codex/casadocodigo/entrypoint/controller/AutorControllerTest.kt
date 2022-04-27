@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.mockito.Mockito
+import org.mockito.Mockito.mock
 import org.mockito.junit.jupiter.MockitoExtension
 import java.time.LocalDateTime
 
@@ -19,7 +19,7 @@ internal class AutorControllerTest {
     lateinit var autorController: AutorController
 
     @Mock
-    val autorUseCase: AutorUseCase = Mockito.mock(AutorUseCase::class.java)
+    val autorUseCase: AutorUseCase = mock(AutorUseCase::class.java)
 
     private lateinit var autorIn: AutorIn
 

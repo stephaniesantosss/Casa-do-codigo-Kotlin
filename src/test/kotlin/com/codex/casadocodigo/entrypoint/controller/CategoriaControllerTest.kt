@@ -20,7 +20,7 @@ internal class CategoriaControllerTest {
     @Mock
     val categoriaUseCase: CategoriaUseCase = mock(CategoriaUseCase::class.java)
 
-    lateinit var categoriaIn: CategoriaIn
+    private lateinit var categoriaIn: CategoriaIn
 
     @BeforeEach
     fun setup() {
