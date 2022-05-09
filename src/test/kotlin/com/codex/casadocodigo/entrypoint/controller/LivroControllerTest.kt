@@ -27,15 +27,15 @@ internal class LivroControllerTest {
 
     private lateinit var livroOut: LivroOut
 
-    private var generator: EasyRandom = EasyRandom()
+    private var gerador: EasyRandom = EasyRandom()
 
     private lateinit var listLivro: List<LivroOut>
 
     @BeforeEach
     fun setup() {
-        livroIn = generator.nextObject(LivroIn::class.java)
-        listLivro = generator.objects(LivroOut::class.java, 2).collect(Collectors.toList())
-        livroOut = generator.nextObject(LivroOut::class.java)
+        livroIn = gerador.nextObject(LivroIn::class.java)
+        listLivro = gerador.objects(LivroOut::class.java, 2).collect(Collectors.toList())
+        livroOut = gerador.nextObject(LivroOut::class.java)
     }
 
     @Test

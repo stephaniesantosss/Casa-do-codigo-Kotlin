@@ -2,6 +2,7 @@ package com.codex.casadocodigo.entrypoint.controller
 
 import com.codex.casadocodigo.core.model.dto.EstadoIn
 import com.codex.casadocodigo.core.usecase.EstadoUseCase
+import org.jeasy.random.EasyRandom
 import org.junit.jupiter.api.Assertions.assertDoesNotThrow
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -20,22 +21,17 @@ internal class EstadoControllerTest {
     @Mock
     val estadoUseCase: EstadoUseCase = mock(EstadoUseCase::class.java)
 
+    private var gerador: EasyRandom = EasyRandom()
+
     private lateinit var estadoIn: EstadoIn
 
     @BeforeEach
     fun setup() {
-        estadoIn = estadoIn()
+        estadoIn = gerador.nextObject(EstadoIn::class.java)
     }
 
     @Test
     fun deveSalvarEstadoComSucesso() {
         assertDoesNotThrow { estadoController.salvaEstado(estadoIn) }
-    }
-
-    fun estadoIn(): EstadoIn {
-        return EstadoIn(
-                nome = "São Paulo",
-                idPais = 1
-        )
     }
 }

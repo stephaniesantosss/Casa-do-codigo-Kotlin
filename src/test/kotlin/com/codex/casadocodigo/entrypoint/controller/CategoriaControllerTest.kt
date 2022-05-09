@@ -2,6 +2,7 @@ package com.codex.casadocodigo.entrypoint.controller
 
 import com.codex.casadocodigo.core.model.dto.CategoriaIn
 import com.codex.casadocodigo.core.usecase.CategoriaUseCase
+import org.jeasy.random.EasyRandom
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
@@ -20,22 +21,17 @@ internal class CategoriaControllerTest {
     @Mock
     val categoriaUseCase: CategoriaUseCase = mock(CategoriaUseCase::class.java)
 
+    private var gerador: EasyRandom = EasyRandom()
+
     private lateinit var categoriaIn: CategoriaIn
 
     @BeforeEach
     fun setup() {
-        categoriaIn = categoriaIn()
+        categoriaIn = gerador.nextObject(CategoriaIn::class.java)
     }
 
     @Test
     fun deveSalvarCategoriaComSucesso() {
         assertDoesNotThrow { categoriaController.salvaCategoria(categoriaIn) }
     }
-
-    fun categoriaIn(): CategoriaIn {
-        return CategoriaIn(
-                nome = "TI"
-        )
-    }
-
 }

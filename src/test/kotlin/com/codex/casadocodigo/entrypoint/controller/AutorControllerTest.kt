@@ -2,6 +2,7 @@ package com.codex.casadocodigo.entrypoint.controller
 
 import com.codex.casadocodigo.core.model.dto.AutorIn
 import com.codex.casadocodigo.core.usecase.AutorUseCase
+import org.jeasy.random.EasyRandom
 import org.junit.jupiter.api.Assertions.assertDoesNotThrow
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -10,7 +11,6 @@ import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.mock
 import org.mockito.junit.jupiter.MockitoExtension
-import java.time.LocalDateTime
 
 @ExtendWith(MockitoExtension::class)
 internal class AutorControllerTest {
@@ -21,24 +21,17 @@ internal class AutorControllerTest {
     @Mock
     val autorUseCase: AutorUseCase = mock(AutorUseCase::class.java)
 
+    private var gerador: EasyRandom = EasyRandom()
+
     private lateinit var autorIn: AutorIn
 
     @BeforeEach
     fun setup() {
-        autorIn = autorIn()
+        autorIn = gerador.nextObject(AutorIn::class.java)
     }
 
     @Test
     fun deveSalvarAutorComSucesso() {
         assertDoesNotThrow { autorController.salvaAutor(autorIn) }
-    }
-
-    fun autorIn(): AutorIn {
-        return AutorIn(
-                nome = "Stephanie",
-                email = "stephanie@gmail.com",
-                descricao = "aaaaaaa",
-                instanteRegistro = LocalDateTime.now()
-        )
     }
 }
