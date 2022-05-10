@@ -15,7 +15,5 @@ class PaisGatewayImpl(val paisRepository: PaisRepository) : PaisGateway {
                 throw DuplicateKeyException("Este Pais já está cadastrado, favor informar outro")
             paisRepository.save(pais)
         }
-
     }
-
 }

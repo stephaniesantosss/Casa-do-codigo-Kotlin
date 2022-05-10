@@ -13,7 +13,7 @@ class CategoriaGatewayImpl(val categoriaRepository: CategoriaRepository) : Categ
 
         categoriaRepository.existsByNome(categoria.nome).let {
             if (it)
-                throw DuplicateKeyException("Está categoria já está cadastrada, favor informar outra")
+                throw DuplicateKeyException("Esta categoria já está cadastrada, favor informar outra")
         }
 
         categoriaRepository.save(categoria)
