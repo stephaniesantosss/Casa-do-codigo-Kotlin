@@ -11,6 +11,4 @@ class AutorController(val autorUseCase: AutorUseCase) : AutorControllerApi {
     override fun salvaAutor(autorIn: AutorIn) {
         autorUseCase.salvaAutor(autorIn)
     }
-
-
 }
